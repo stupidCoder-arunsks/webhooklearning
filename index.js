@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 
 // Define constants
 const PORT = process.env.PORT || 3000;
-const FACEBOOK_GRAPH_API_VERSION = "v13.0";
+const FACEBOOK_GRAPH_API_VERSION = "v17.0";
 
 // Start the Express server
 app.listen(PORT, () => {
