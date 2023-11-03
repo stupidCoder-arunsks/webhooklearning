@@ -22,6 +22,7 @@ app.listen(PORT, () => {
 
 // Webhook verification
 app.get("/webhook", (req, res) => {
+  console.log("inside webhook get >>> ");
   const mode = req.query["hub.mode"];
   const challenge = req.query["hub.challenge"];
   const verifyToken = req.query["hub.verify_token"];
@@ -37,6 +38,7 @@ app.get("/webhook", (req, res) => {
 
 // Handling incoming messages
 app.post("/webhook", (req, res) => {
+  console.log("inside webhook post >>> ");
   const bodyParams = req.body;
 
   console.log(JSON.stringify(bodyParams, null, 2));
@@ -47,7 +49,6 @@ app.post("/webhook", (req, res) => {
     if (entry && entry.changes && entry.changes[0].value.messages) {
       const metadata = entry.changes[0].value.metadata;
       const messages = entry.changes[0].value.messages[0];
-
       const phoneNumberId = metadata.phone_number_id;
       const from = messages.from;
       const messageBody = messages.text.body;
@@ -63,7 +64,7 @@ app.post("/webhook", (req, res) => {
           messaging_product: "whatsapp",
           to: from,
           text: {
-            body: `Hi, I'm Prasath. Your message is: ${messageBody}`,
+            body: `Hi, I'm Arunsks. Your message is: ${messageBody}`,
           },
         },
         {
@@ -82,5 +83,6 @@ app.post("/webhook", (req, res) => {
 
 // Default route
 app.get("/", (req, res) => {
-  res.status(200).send("Hello, this is the webhook setup");
+  console.log("inside / route of node");
+  res.status(200).send("Hello, this is the webhook setup created by arun");
 });
