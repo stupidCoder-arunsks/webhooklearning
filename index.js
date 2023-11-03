@@ -87,3 +87,9 @@ app.get("/", (req, res) => {
   console.log("token ", token, "myToken ", myToken);
   res.status(200).send("Hello, this is the webhook setup created by arun");
 });
+
+app.get("/hello", (req, res) => {
+    console.log("inside / hello route of node");
+    // console.log("token ", token, "myToken ", myToken);
+    res.status(200).send("Hello, method");
+  });
