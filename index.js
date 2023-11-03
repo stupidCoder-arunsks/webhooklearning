@@ -28,7 +28,7 @@ app.get("/webhook", (req, res) => {
   const verifyToken = req.query["hub.verify_token"];
 
   if (mode && verifyToken) {
-    if (mode === "subscribe" && verifyToken === myToken) {
+    if (mode === "subscibe" && verifyToken === myToken) {
       res.status(200).send(challenge);
     } else {
       res.status(403).send("Verification failed");
@@ -84,5 +84,6 @@ app.post("/webhook", (req, res) => {
 // Default route
 app.get("/", (req, res) => {
   console.log("inside / route of node");
+  console.log("token ", token, "myToken ", myToken);
   res.status(200).send("Hello, this is the webhook setup created by arun");
 });
